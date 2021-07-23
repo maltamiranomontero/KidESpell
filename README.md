@@ -8,6 +8,6 @@ To install from source:
 
 ```
 git clone https://github.com/maltamiranomontero/KidEspell.git
-cd pyspellchecker
+cd KidEspell 
 python setup.py install
 ```
