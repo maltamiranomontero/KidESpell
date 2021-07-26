@@ -11,8 +11,3 @@ git clone https://github.com/maltamiranomontero/KidEspell.git
 cd KidEspell 
 python setup.py install
 ```
-
-```python
-def function(x):
-  return x
-```
