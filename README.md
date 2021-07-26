@@ -7,7 +7,7 @@ A python Spanish spell checking oriented to child, based on [KidSpell](https://a
 To install from source:
 
 ```
-git clone https://github.com/maltamiranomontero/KidEspell.git
+git clone https://github.com/maltamiranomontero/KidESpell.git
 cd KidEspell 
 python setup.py install
 ```
