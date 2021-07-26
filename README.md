@@ -11,3 +11,19 @@ git clone https://github.com/maltamiranomontero/KidEspell.git
 cd KidEspell 
 python setup.py install
 ```
+
+## Quickstart
+
+To use it:
+
+```python
+from kidespell import SpellChecker
+
+SC = SpellChecker()
+
+SC.getSuggestionsForSentence('ce stas asiendo')
+#Return: {'asiendo': ['haciendo', 'siendo', 'asiento', 'habiendo', 'hacienda'],
+# 'ce': ['que', 'ce', 'cae', 'co', 'cc'],
+# 'stas': ['estas', 'seas', 'ptas', 'citas']}
+
+```

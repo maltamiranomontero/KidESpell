@@ -3,37 +3,23 @@ import stringdist #pip install StringDist
 import numpy as np
 import re
 
-class KidSpell(object):
-  def __init__(self, dictionary_path):
+class SpellChecker(object):
+  def __init__(self, dictionary_path="kidespell/resources/10000_esp.txt",rules_path="kidespell/resources/rules_esp.txt"):
     self.ks_vocab = {}
     with open(dictionary_path) as f:
       for line in f:
         (key, val) = line.split()
-        self.ks_vocab[key] = val
-    self.rules = [
-      (r'[^A-zÀ-ú]', r''),  #remove non-letters
-      #EXEPTIONS
-      (r'^ce$', r'KE'), #CE -> KE
-      #PRIMARY RULES
-      (r'[á]', r'aa'), #á -> aa
-      (r'[é]', r'ee'), #é -> ee
-      (r'[í]', r'ii'), #í -> ii
-      (r'[ó]', r'oo'), #ó -> oo
-      (r'[ú]', r'uu'), #ú -> uu
-      (r'x', r'KS'), #x -> KS
-      (r'w', r'W'), #w -> GU
-      (r't?ch',r'0'), #ch or tch to CH - CH sound represented as 0
-      (r'ce', r'SE'), #ce -> SE
-      (r'ci', r'SI'), #ci -> SI
-      (r'[c]', r'K'), #other c's -> K
-      (r'qu', r'K'), #qu -> k
-      (r'ci', r'SI'), #ci -> SI
-      (r'r+', r'R'), #remove extra r
-      (r'z', r'S'), # z -> S
-      (r'y', r'LL'), # y -> ll
-      (r'v', r'B'), # v -> B
-      (r'h', r''), # h -> silent
-    ]
+        self.ks_vocab[key.upper()] = val
+    self.rules = []
+    with open(rules_path) as f:
+      for line in f:
+          li=line.strip()
+          if not li.startswith("#"):
+              li = line.rstrip().split()
+              if len(li)==1:
+                  self.rules.append((li[0],''))
+              else:
+                  self.rules.append((li[0],li[1]))  
     self.phonetic_dict = {}
     for word in self.ks_vocab:
         word = str(word).lower()
