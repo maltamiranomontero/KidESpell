@@ -8,7 +8,7 @@ To install from source:
 
 ```
 git clone https://github.com/maltamiranomontero/KidESpell.git
-cd KidEspell 
+cd KidESpell 
 python setup.py install
 ```
 
