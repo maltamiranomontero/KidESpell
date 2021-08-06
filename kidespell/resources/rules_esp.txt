@@ -2,7 +2,7 @@
 [^A-zÀ-ú]  
 ##EXEPTIONS
 #CE -> KE
-^ce$ KE
+#^ce$ KE
 ##PRIMARY RULES
 #á -> aa
 [á] AA

@@ -1,16 +1,23 @@
 import pandas as pd
 import stringdist #pip install StringDist
 import numpy as np
+import os
 import re
 
+PATH = os.path.abspath(os.path.dirname(__file__))
+
 class SpellChecker(object):
-  def __init__(self, dictionary_path="kidespell/resources/10000_esp.txt",rules_path="kidespell/resources/rules_esp.txt"):
+  def __init__(self, dictionary_path = None, rules_path = None ):
     self.ks_vocab = {}
+    if dictionary_path==None:
+      dictionary_path = os.path.join(PATH, "resources/10000_esp.txt")
     with open(dictionary_path) as f:
       for line in f:
         (key, val) = line.split()
         self.ks_vocab[key.upper()] = val
     self.rules = []
+    if rules_path==None:
+      rules_path = os.path.join(PATH, "resources/rules_esp.txt")
     with open(rules_path) as f:
       for line in f:
           li=line.strip()
@@ -71,6 +78,8 @@ class SpellChecker(object):
     suggestions = [sug[0].upper() + sug[1:] if word[0].upper() == word[0] else sug for sug in list(dict.fromkeys(suggestions)) if len(sug) > 1]
     return suggestions[:count]
 
+  def correct(self,word):
+    return self.suggestions(word,1)[0]
 
   def isInVocab(self,word):
     return word.upper() in self.ks_vocab
@@ -80,3 +89,6 @@ class SpellChecker(object):
 
   def getSuggestionsForSentence(self,sentence, max=5):
     return {word:self.suggestions(word, max) for word in sentence.split() if word.upper() not in self.ks_vocab}
+
+  def correctSentence(self,sentence):
+    return ' '.join([self.correct(word) for word in sentence.split()])
