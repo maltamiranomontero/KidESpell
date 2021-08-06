@@ -7,8 +7,8 @@ A python Spanish spell checking oriented to child, based on [KidSpell](https://a
 To install from source:
 
 ```
-git clone https://github.com/maltamiranomontero/KidEspell.git
-cd KidEspell 
+git clone https://github.com/maltamiranomontero/KidESpell.git
+cd KidESpell 
 python setup.py install
 ```
 
