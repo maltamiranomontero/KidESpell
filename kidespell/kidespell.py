@@ -9,7 +9,7 @@ PATH = os.path.abspath(os.path.dirname(__file__))
 
 class SpellChecker(object):
   """
-  TODO: Add bigrams.
+  SpellChecker based on https://github.com/BSU-CAST/KidSpell and Word Segmentation based on https://github.com/grantjenks/python-wordsegment/
   """
   def __init__(self, dictionary_path = None, rules_path = None, bigram_path = None):
     self.dictionary = {}
