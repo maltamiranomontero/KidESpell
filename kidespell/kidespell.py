@@ -84,7 +84,7 @@ class SpellChecker(object):
         for eword in self.edit_distance_1(spelling_phone):
             if eword.upper() in self.phonetic_dict:
                 additional_suggestions.extend(self.phonetic_dict[eword.upper()])
-        additional_suggestions.sort(key=lambda x: stringdist.levenshtein_norm(x, word))
+        additional_suggestions.sort(key=lambda x: self.score(x))
         suggestions.extend(additional_suggestions)
 
     suggestions = [sug[0].upper() + sug[1:] if word[0].upper() == word[0] else sug for sug in list(dict.fromkeys(suggestions)) if len(sug) > 1]
