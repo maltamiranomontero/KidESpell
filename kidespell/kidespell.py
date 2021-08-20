@@ -1,6 +1,3 @@
-import pandas as pd
-import stringdist #pip install StringDist
-import numpy as np
 import os
 import re
 import math
