@@ -12,21 +12,21 @@ class SpellChecker(object):
     self.dictionary = {}
     if dictionary_path==None:
       dictionary_path = os.path.join(PATH, "resources/10000_esp.txt")
-    with open(dictionary_path) as f:
+    with open(dictionary_path, encoding="utf-8") as f:
       for line in f:
         (key, val) = line.split()
         self.dictionary[key.upper()] = int(val)
     self.bigram = {}
     if bigram_path==None:
       bigram_path = os.path.join(PATH, "resources/bi_esp.txt")
-    with open(bigram_path) as f:
+    with open(bigram_path, encoding="utf-8") as f:
       for line in f:
         (key1, key2, val) = line.split()
         self.bigram[key1.upper()+' '+key2.upper() ] = int(val)
     self.rules = []
     if rules_path==None:
       rules_path = os.path.join(PATH, "resources/rules_esp.txt")
-    with open(rules_path) as f:
+    with open(rules_path, encoding="utf-8") as f:
       for line in f:
           li=line.strip()
           if not li.startswith("#"):
